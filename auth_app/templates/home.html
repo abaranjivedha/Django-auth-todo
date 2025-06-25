@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #00224D;
+            color: white;
+            font-family: Cambria, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .welcome-box {
+            background-color: #5D0E41;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 20px #00000060;
+        }
+        .welcome-box h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #FF204E;
+            font-weight: bold;
+            text-decoration: none;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+        }
+        a:hover {
+            background: #FF204E;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-box">
+    {% if user.is_authenticated %}
+        <p>Welcome {{ user.username }}</p>
+        <a href="{% url 'task_list' %}">To-Do List</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+    </div>
+</body>
+</html>
